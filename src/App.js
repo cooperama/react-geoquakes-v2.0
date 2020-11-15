@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
 import Quakes from "./components/Quakes";
-import Map from "./components/Map";
+import MapContainer from "./components/Map";
 import { URL } from "./constants";
 
 import "./App.css";
@@ -16,7 +16,6 @@ class App extends Component {
     axios
       .get(URL)
       .then((response) => {
-        console.log(response.data.features[0].properties.title);
         this.setState({ quakesData: response.data.features });
       })
       .catch((error) => {
@@ -30,11 +29,10 @@ class App extends Component {
     return (
       <div className="app">
         <div className="mapContainer">
-          <Map />
+          <MapContainer data={this.state.quakesData} />
         </div>
         <div className="quakeContainer">
           <h1>Earthquakes from the past week:</h1>
-          {/* <Quakes /> */}
           {quakes}
         </div>
       </div>
