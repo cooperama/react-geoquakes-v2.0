@@ -1,19 +1,45 @@
-import React from 'react';
+import React, { Component } from "react";
+import axios from "axios";
+import { v4 as uuidv4 } from "uuid";
+import Quakes from "./components/Quakes";
+import Map from "./components/Map";
+import { URL } from "./constants";
 
-import './App.css';
+import "./App.css";
 
-function App() {
-  return (
-    <div className="app">
-      <div className="mapContainer">
-        ...put Map Component here...
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { quakesData: [] };
+  }
+  componentDidMount() {
+    axios
+      .get(URL)
+      .then((response) => {
+        console.log(response.data.features[0].properties.title);
+        this.setState({ quakesData: response.data.features });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+  render() {
+    const quakes = this.state.quakesData.map((data) => {
+      return <Quakes key={uuidv4()} data={data} />;
+    });
+    return (
+      <div className="app">
+        <div className="mapContainer">
+          <Map />
+        </div>
+        <div className="quakeContainer">
+          <h1>Earthquakes from the past week:</h1>
+          {/* <Quakes /> */}
+          {quakes}
+        </div>
       </div>
-      <div className="quakeContainer">
-        <h1>Earthquakes from the past week:</h1>
-        ...put Quakes Component here...
-      </div>
-    </div>
-  );
+    );
+  }
 }
 
 export default App;
