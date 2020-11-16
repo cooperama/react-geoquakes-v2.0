@@ -35,9 +35,6 @@ class MapContainer extends React.Component {
       width: "90%",
       height: "90%",
     };
-    const markerStyle = {
-      backgroundColor: "red",
-    };
     const quakeMarkers = this.props.data.map((quake) => {
       let markerSize;
       if (quake.properties.mag < 4) {
@@ -75,19 +72,6 @@ class MapContainer extends React.Component {
         zoom={2}
         initialCenter={{ lat: 47.6, lng: -122.3 }}
       >
-        <Marker
-          onClick={this.markerClickHandler}
-          title={"My City"}
-          name={"Seattle"}
-          position={{ lat: 47.6, lng: -122.3 }}
-          icon={{
-            url: icon,
-            scaledSize: new google.maps.Size(30, 30),
-            origin: new google.maps.Point(0, 0),
-            anchor: new google.maps.Point(0, 0),
-          }}
-          key={uuidv4()}
-        />
         {quakeMarkers}
         <InfoWindow
           marker={this.state.activeMarker}

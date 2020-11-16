@@ -25,6 +25,11 @@ body {
 .navbar {
   height: 10vh;
   background-color: #34404e;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 3rem 1rem 0;
+  box-shadow: 2px 2px 5px rgb(145, 145, 145);
 }
 
 h1 {
@@ -39,7 +44,7 @@ h1 {
 }
 
 /* *************************************** */
-/* **********    Main Styles    ********** */
+/* ***********    Containers    ********** */
 /* *************************************** */
 .main-content-div {
   display: flex;
@@ -60,6 +65,25 @@ h1 {
   overflow: scroll;
   padding: 1rem;
   margin-right: 1rem;
+  box-shadow: 10px 30px 50px rgb(203, 203, 203);
+}
+
+/* *************************************** */
+/* ********    Quake Container    ******** */
+/* *************************************** */
+.quakeContainer > div:nth-child(1) {
+  display: flex;
+}
+
+.quake-count {
+  font-size: 2.2rem;
+  color: #34404e;
+  text-align: center;
+  margin-bottom: 0;
+}
+
+.quake-count + p {
+  margin-top: 0;
 }
 
 .earthquake-details {
@@ -80,6 +104,7 @@ h1 {
 .earthquake-details:nth-of-type(odd) {
   background-color: rgb(210, 210, 210);
 }
+
 .earthquake-details:nth-of-type(even) {
   background-color: rgb(244, 244, 244);
 }

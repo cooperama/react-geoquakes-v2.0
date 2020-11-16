@@ -6,6 +6,7 @@ function Quakes(props) {
     (Date.now() - new Date(props.data.properties.time)) /
     (60 * 60 * 1000)
   ).toFixed();
+  // Extract only the location name without the magnitude
   const parseLocation = (quakePlace) => {
     let startIndex = quakePlace.indexOf("of");
     startIndex === -1 ? startIndex++ : (startIndex += 3);
