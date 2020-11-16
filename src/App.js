@@ -28,12 +28,12 @@ class App extends Component {
     });
     return (
       <div className="app">
-        <div className="mapContainer">
-          <MapContainer data={this.state.quakesData} />
-        </div>
         <div className="quakeContainer">
           <h1>Earthquakes from the past week:</h1>
           {quakes}
+        </div>
+        <div className="mapContainer">
+          <MapContainer data={this.state.quakesData} />
         </div>
       </div>
     );
