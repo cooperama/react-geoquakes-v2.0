@@ -3,6 +3,7 @@ import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
 import Quakes from "./components/Quakes";
 import MapContainer from "./components/Map";
+import Navbar from "./components/Navbar";
 import { URL } from "./constants";
 
 import "./App.css";
@@ -28,12 +29,15 @@ class App extends Component {
     });
     return (
       <div className="app">
-        <div className="quakeContainer">
-          <h1>Earthquakes from the past week:</h1>
-          {quakes}
-        </div>
-        <div className="mapContainer">
-          <MapContainer data={this.state.quakesData} />
+        <Navbar />
+        <div className="main-content-div">
+          <div className="mapContainer">
+            <MapContainer data={this.state.quakesData} />
+          </div>
+          <div className="quakeContainer">
+            <h2>Earthquakes from the past week:</h2>
+            <div id="info">{quakes}</div>
+          </div>
         </div>
       </div>
     );

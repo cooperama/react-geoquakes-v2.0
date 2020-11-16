@@ -32,10 +32,23 @@ class MapContainer extends React.Component {
     const google = window.google;
     const mapStyle = {
       position: "relative",
-      width: "100%",
-      height: "100%",
+      width: "90%",
+      height: "90%",
+    };
+    const markerStyle = {
+      backgroundColor: "red",
     };
     const quakeMarkers = this.props.data.map((quake) => {
+      let markerSize;
+      if (quake.properties.mag < 4) {
+        markerSize = new google.maps.Size(5, 5);
+      } else if (quake.properties.mag < 6) {
+        markerSize = new google.maps.Size(20, 20);
+      } else if (quake.properties.mag < 8) {
+        markerSize = new google.maps.Size(35, 35);
+      } else {
+        markerSize = new google.maps.Size(50, 50);
+      }
       return (
         <Marker
           onClick={this.markerClickHandler}
@@ -47,7 +60,7 @@ class MapContainer extends React.Component {
           }}
           icon={{
             url: icon,
-            scaledSize: new google.maps.Size(30, 30),
+            scaledSize: markerSize,
             origin: new google.maps.Point(0, 0),
             anchor: new google.maps.Point(0, 0),
           }}
@@ -58,9 +71,8 @@ class MapContainer extends React.Component {
     return (
       <Map
         style={mapStyle}
-        // containerStyle={mapStyle}
         google={this.props.google}
-        zoom={3}
+        zoom={2}
         initialCenter={{ lat: 47.6, lng: -122.3 }}
       >
         <Marker

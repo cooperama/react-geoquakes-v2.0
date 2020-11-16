@@ -6,10 +6,17 @@ function Quakes(props) {
     (Date.now() - new Date(props.data.properties.time)) /
     (60 * 60 * 1000)
   ).toFixed();
+  const parseLocation = (quakePlace) => {
+    let startIndex = quakePlace.indexOf("of");
+    startIndex === -1 ? startIndex++ : (startIndex += 3);
+    const location = quakePlace.slice(startIndex);
+    return location.slice(0, 1).toUpperCase().concat(location.slice(1));
+  };
   return (
-    <p>
-      {props.data.properties.title} / {hoursAgo} hours ago
-    </p>
+    <div className="earthquake-details">
+      <p>{parseLocation(props.data.properties.place)}</p>
+      <p>{hoursAgo} hours ago</p>
+    </div>
   );
 }
 

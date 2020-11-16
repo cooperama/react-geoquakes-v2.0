@@ -6,6 +6,11 @@ body {
   font-family: sans-serif;
 }
 
+#root {
+  height: 100%;
+  width: 100%;
+}
+
 .app {
   display: flex;
   height: 100%;
@@ -14,23 +19,67 @@ body {
   justify-content: space-around;
 }
 
+/* *************************************** */
+/* ************    Navbar    ************* */
+/* *************************************** */
+.navbar {
+  height: 10vh;
+  background-color: #34404e;
+}
+
+h1 {
+  padding-left: 3rem;
+  color: rgb(213, 213, 213);
+}
+
+.quake-icon {
+  width: 30px;
+  padding-right: 1rem;
+  filter: invert();
+}
+
+/* *************************************** */
+/* **********    Main Styles    ********** */
+/* *************************************** */
+.main-content-div {
+  display: flex;
+  height: 90vh;
+}
+
 .mapContainer {
-  height: 300px;
+  height: 100%;
   width: 100%;
-  padding-top: 2em;
+  padding-top: 1em;
   padding-left: 2em;
-  background-color: lightblue;
-  /* position: relative; */
+  position: relative;
 }
 
 .quakeContainer {
-  height: 300px;
-  width: 100%;
+  height: 100%;
+  width: 500px;
   overflow: scroll;
-  padding: 2rem;
-  background-color: pink;
+  padding: 1rem;
+  margin-right: 1rem;
 }
 
-.container-map {
-  box-sizing: initial;
+.earthquake-details {
+  padding: 10px 20px;
+}
+
+.earthquake-details p {
+  padding: 0;
+  margin: 0;
+}
+
+.earthquake-details p:nth-of-type(2) {
+  color: rgb(34, 34, 34);
+  font-size: 0.9rem;
+  text-align: right;
+}
+
+.earthquake-details:nth-of-type(odd) {
+  background-color: rgb(210, 210, 210);
+}
+.earthquake-details:nth-of-type(even) {
+  background-color: rgb(244, 244, 244);
 }
