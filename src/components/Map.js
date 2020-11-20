@@ -38,9 +38,9 @@ class MapContainer extends React.Component {
     const quakeMarkers = this.props.data.map((quake) => {
       let markerSize;
       if (quake.properties.mag < 4) {
-        markerSize = new google.maps.Size(5, 5);
+        markerSize = new google.maps.Size(15, 15);
       } else if (quake.properties.mag < 6) {
-        markerSize = new google.maps.Size(20, 20);
+        markerSize = new google.maps.Size(25, 25);
       } else if (quake.properties.mag < 8) {
         markerSize = new google.maps.Size(35, 35);
       } else {

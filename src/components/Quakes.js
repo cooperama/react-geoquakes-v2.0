@@ -16,7 +16,9 @@ function Quakes(props) {
   return (
     <div className="earthquake-details">
       <p>{parseLocation(props.data.properties.place)}</p>
-      <p>{hoursAgo} hours ago</p>
+      <p>
+        M {props.data.properties.mag} - {hoursAgo} hours ago
+      </p>
     </div>
   );
 }
